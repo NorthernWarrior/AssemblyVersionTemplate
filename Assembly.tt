@@ -1,0 +1,15 @@
+<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="$(SolutionDir){PathToYourExe_DLL}" #>
+<#@ import namespace="{NamespaceToYourVersionClass}" #>
+<#@ output extension="cs" #>
+using System.Reflection;
+
+[assembly: AssemblyVersion("<#= this.Release #>.<#= this.Build #>.<#= this.Step #>.<#= this.HotFix #>")]
+[assembly: AssemblyFileVersion("<#= this.Release #>.<#= this.Build #>.<#= this.Step #>.<#= this.HotFix #>")]
+<#+
+int Release = Version.Release;
+int Build = Version.Build;
+int Step = Version.Step;
+int HotFix = Version.HotFix;
+#>
